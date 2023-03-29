@@ -63,13 +63,23 @@
       }
 
       function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(saveLocation);
-          document.getElementById("continue-btn").style.display = "block";
-        } else {
-          alert("Geolocation is not supported by this browser.");
-        }
+  const continueBtn = document.getElementById("continue-btn");
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(saveLocation, function(error) {
+      if (error.code == error.PERMISSION_DENIED) {
+        continueBtn.innerHTML = "Please enable location and click to continue";
+        continueBtn.style.display = "block";
+        continueBtn.onclick = function() {
+          getLocation();
+        };
       }
+    });
+    continueBtn.style.display = "block";
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
 
       getLocation();
     </script>
