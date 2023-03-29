@@ -82,11 +82,10 @@ function getLocation() {
             continueBtn.style.display = "none";
           });
         };
-        else{
-        alert("Enable the location please");
-        };
       }
     });
+  } else {
+    alert("Geolocation is not supported by this browser.");
   }
 }
 
