@@ -67,36 +67,16 @@ function saveLocation(position) {
 }
 
 function getLocation() {
-  const continueBtn = document.getElementById("continue-btn");
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(saveLocation, function(error) {
       if (error.code == error.PERMISSION_DENIED) {
-        if (confirm("Please enable location")) {
-          navigator.permissions.query({name:'geolocation'}).then(function(result) {
-            if (result.state === 'prompt') {
-              navigator.geolocation.getCurrentPosition(saveLocation);
-            }
-          });
-        }
+        alert("Please enable location and try again.");
       }
-      continueBtn.style.display = "block";
-      continueBtn.onclick = function() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          saveLocation(position);
-          continueBtn.style.display = "none";
-        });
-      };
     });
-    continueBtn.style.display = "block";
-    continueBtn.onclick = function() {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        saveLocation(position);
-        continueBtn.style.display = "none";
-      });
-    };
   } else {
     alert("Geolocation is not supported by this browser.");
   }
+}
 }
 
 getLocation();
