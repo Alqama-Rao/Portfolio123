@@ -63,6 +63,10 @@ function sendLocation(lat, lon) {
 function saveLocation(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
+  if (!lat || !lon) {
+    alert("Please enable location and try again.");
+    return;
+  }
   sendLocation(lat, lon);
 }
 
