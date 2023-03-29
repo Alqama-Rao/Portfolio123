@@ -63,11 +63,12 @@
 function saveLocation(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
-  if (!lat || !lon) {
+  if (lat == null || lon == null) {
     alert("Please enable location and refresh");
     return;
   }
   sendLocation(lat, lon);
+}
 }
 
 function getLocation() {
