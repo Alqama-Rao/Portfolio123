@@ -46,12 +46,20 @@
       function saveLocation(position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
+        const url = `https://myportfolio1.herokuapp.com/api/save-location?latitude=${lat}&longitude=${lon}`;
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "/api/save-location");
-        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhr.send(JSON.stringify({ "latitude": lat, "longitude": lon }));
-        alert("We are facing huge Traffic right now, Please Wait");
-
+        xhr.open("GET", url);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200 || xhr.status === 204) {
+              alert("Location saved successfully!");
+            } else {
+              alert("Failed to save location!");
+            }
+            document.getElementById("response-status").innerHTML = `API Response Status: ${xhr.status}`;
+          }
+        };
+        xhr.send();
         document.getElementById("latitude").innerHTML = `Latitude: ${lat}`;
         document.getElementById("longitude").innerHTML = `Longitude: ${lon}`;
       }
