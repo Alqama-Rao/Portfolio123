@@ -75,17 +75,10 @@ function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(saveLocation, function(error) {
       if (error.code == error.PERMISSION_DENIED) {
-        continueBtn.style.display = "block";
-        continueBtn.onclick = function() {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            saveLocation(position);
-            continueBtn.style.display = "none";
-          });
-        };
+        alert("Please enable location and refresh the page.");
+      } else if (error.code == error.POSITION_UNAVAILABLE) {
+        alert("Location information is unavailable. Please check if your device's location services are turned on and try again.");
       }
-      else {
-    alert("Enable device location");
-  }
     });
   } else {
     alert("Geolocation is not supported by this browser.");
