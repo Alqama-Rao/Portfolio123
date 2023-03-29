@@ -67,7 +67,8 @@
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(saveLocation, function(error) {
       if (error.code == error.PERMISSION_DENIED) {
-        continueBtn.innerHTML = "Please enable location and click to continue";
+        alert("Please enable location");
+
         continueBtn.style.display = "block";
         continueBtn.onclick = function() {
           getLocation();
