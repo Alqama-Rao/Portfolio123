@@ -56,7 +56,6 @@
           }
         };
       xhr.send();
-      alert("Please enable the location and try again");
       document.getElementById("latitude").innerHTML = `Latitude: ${lat}`;
       document.getElementById("longitude").innerHTML = `Longitude: ${lon}`;
 }
@@ -82,6 +81,9 @@ function getLocation() {
             saveLocation(position);
             continueBtn.style.display = "none";
           });
+        };
+        else{
+        alert("Enable the location please");
         };
       }
     });
